@@ -35,7 +35,7 @@ func main() {
 		switch leftSafely {
 		case 0:
 			isHeistOn = false
-			fmt.Println("The Heist has failed.")
+			fmt.Println("The Heist has failed, you've been caught by the security cameras!")
 		case 1:
 			isHeistOn = false
 			fmt.Println("The vault couldn't be opened due to lack of time.")
@@ -45,13 +45,24 @@ func main() {
 		default:
 			fmt.Println("Start the getaway car!")
 		}
+
 	}
+	timestamp := time.Now()
+	missiontime := time.Date(2021, time.Month(12), 21, 12, 0, 0, 0, time.UTC)
 
 	if isHeistOn {
-		amtStolen := 1000 + rand.Intn(1000000)
-		fmt.Printf("Amount Stolen from bank: %d", amtStolen)
+
+		if timestamp.Hour() < missiontime.Hour() {
+			amtStolen := 1000 + rand.Intn(1000000)
+			fmt.Printf("Amount Stolen from bank: %d", amtStolen)
+		} else {
+			isHeistOn = false
+			fmt.Println("You ran out of time! ")
+		}
+
 	}
 
 	fmt.Printf("Status of Heist: %v", isHeistOn)
 	fmt.Println(" ")
+
 }
