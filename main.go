@@ -58,6 +58,10 @@ func main() {
 		} else {
 			isHeistOn = false
 			fmt.Println("You ran out of time! ")
+
+			if eludedGuards%2 != 0 {
+				fmt.Println("There were too many guards!")
+			}
 		}
 
 	}
